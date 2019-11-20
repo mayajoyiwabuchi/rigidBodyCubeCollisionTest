@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Constraints : MonoBehaviour {
-
+    
     public bool lockOnSurface;
+
     private bool lockRotation;
     private bool lockVertical;
     public bool controllerGrab;
@@ -35,11 +36,20 @@ public class Constraints : MonoBehaviour {
         controller = GameObject.FindWithTag("GameController");
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="col"></param>
     void OnCollisionStay(Collision col)
     {
         InteractionCategory colIntrCat = col.gameObject.GetComponent<InteractionCategory>();
-
+        
         lockTransformations();
+
+        if(colIntrCat == null)
+        {
+            return;
+        }
 
         if (lockOnSurface && colIntrCat.categoryOne)
         {
@@ -62,14 +72,21 @@ public class Constraints : MonoBehaviour {
         }
 
     }
-
+    /// <summary>
+    /// finds interaction type. based on type of interaction either unlocks vert, resets material, or transform becomes null. 
+    /// </summary>
+    /// <param name="col"></param>
     void OnCollisionExit(Collision col)
     {
         InteractionCategory colIntrCat = col.gameObject.GetComponent<InteractionCategory>();
-
+        if (colIntrCat == null)
+        {
+            return;
+        }
+       
         if (colIntrCat.categoryOne)
         {
-            lockVertical = false;
+            lockVertical = false; 
         }
         lockTransformations();
 

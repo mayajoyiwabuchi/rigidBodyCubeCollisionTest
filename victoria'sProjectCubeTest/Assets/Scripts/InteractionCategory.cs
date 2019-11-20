@@ -8,4 +8,9 @@ public class InteractionCategory : MonoBehaviour {
     public bool categoryOne;
     public bool categoryTwo;
     public bool isConstraint;
+
+    public enum category { categoryZero = 0, categoryOne = 1 };
+    public category myCat;
+
+    
 }
