@@ -11,15 +11,15 @@ public class Constraints : MonoBehaviour {
     public bool controllerGrab;
     bool objectInConstraint;
     private GameObject constraintObject;
-
+     
     bool beingGrabbed;
-    GameObject triggerObject;
+    GameObject triggerObject; 
 
     Vector3 pos;
     Vector3 scale;
 
     private Rigidbody myRigidBody;
-    private InteractionCategory myIntrCat;
+    private InteractionCategory myIntrCat; 
     private Renderer rend;
 
     public Material onTriggerMaterial;
@@ -32,13 +32,14 @@ public class Constraints : MonoBehaviour {
         myRigidBody = GetComponent<Rigidbody>();
         myIntrCat = GetComponent<InteractionCategory>();
         rend = GetComponent<Renderer>();
-        originalMaterial = rend.material;
+        originalMaterial = rend.material; 
         controller = GameObject.FindWithTag("GameController");
+        
     }
 
     /// <summary>
     /// 
-    /// </summary>
+    /// </summary> 
     /// <param name="col"></param>
     void OnCollisionStay(Collision col)
     {
@@ -53,7 +54,7 @@ public class Constraints : MonoBehaviour {
 
         if (lockOnSurface && colIntrCat.categoryOne)
         {
-            lockVertical = true;
+            lockVertical = true; 
             lockRotation = true;
         }
 
@@ -63,7 +64,7 @@ public class Constraints : MonoBehaviour {
             transform.SetParent(col.gameObject.transform, true);
 
             if (controllerGrab)
-                lockTransformations();
+                lockTransformations(); 
         }
 
         if (myIntrCat.isConstraint && colIntrCat.categoryTwo)
@@ -79,20 +80,22 @@ public class Constraints : MonoBehaviour {
     void OnCollisionExit(Collision col)
     {
         InteractionCategory colIntrCat = col.gameObject.GetComponent<InteractionCategory>();
-        if (colIntrCat == null)
-        {
-            return;
-        }
-       
+        
+        ///if (colIntrCat == null)
+        ///{
+        ///return;
+        ///}
+
         if (colIntrCat.categoryOne)
         {
             lockVertical = false; 
         }
+
         lockTransformations();
 
         if (myIntrCat.isConstraint && colIntrCat.categoryTwo)
         {
-            rend.material = originalMaterial;
+            rend.material = originalMaterial; 
         }
 
         if (colIntrCat.categoryZero || colIntrCat.categoryOne)
@@ -110,7 +113,7 @@ public class Constraints : MonoBehaviour {
         if (otherIntrCat != null && otherIntrCat.isConstraint)
         {
             objectInConstraint = true;
-            constraintObject = other.gameObject;
+            constraintObject = other.gameObject; 
         }
 
         ControllerGrabObject myCtrlGrab = other.gameObject.GetComponent<ControllerGrabObject>();
@@ -132,7 +135,7 @@ public class Constraints : MonoBehaviour {
         {
             if (myIntrCat.categoryTwo)
             {
-                myRigidBody.isKinematic = false;
+                myRigidBody.isKinematic = false; 
             }
             
             triggerObject = other.gameObject;
@@ -143,11 +146,11 @@ public class Constraints : MonoBehaviour {
         {
             if (triggerObject.GetComponent<Constraints>().controllerGrab && myIntrCat.isConstraint && GetComponent<Constraints>().onTriggerMaterial != null)
             {
-                rend.material = onTriggerMaterial;
+                rend.material = onTriggerMaterial; 
             }
             else if (!triggerObject.GetComponent<Constraints>().controllerGrab)
             {
-                rend.material = originalMaterial;
+                rend.material = originalMaterial; 
             }
         }
 
@@ -176,7 +179,7 @@ public class Constraints : MonoBehaviour {
         {
             if (myIntrCat.isConstraint)
             {
-                rend.material = originalMaterial;
+                rend.material = originalMaterial; 
             }
         }
         if (otherIntrCat.isConstraint)
@@ -235,7 +238,7 @@ public class Constraints : MonoBehaviour {
     {
         if (myIntrCat.categoryTwo && triggerObject.tag == "GameController")
         {
-            beingGrabbed = true;
+            beingGrabbed = true; 
         }
         Debug.Log("On Grab Started");
         if (beingGrabbed && triggerObject.tag == "GameController")

@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.victoriasprojectcubetest.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\Users\\mayaj\\Desktop\\victoriasCubeCollisionTest\\victoria'sProjectCubeTest\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "C:\\Users\\mayaj\\Desktop\\collisionProject\\victoriasCubeCollisionTest\\victoria'sProjectCubeTest\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "victoria'sProjectCubeTest [Testing]"
