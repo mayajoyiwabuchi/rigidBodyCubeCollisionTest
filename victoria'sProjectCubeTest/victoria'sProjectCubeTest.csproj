@@ -578,8 +578,10 @@
     <Compile Include="Assets\Scripts\CollisionDetect.cs" />
     <Compile Include="Assets\Scripts\collisionLog.cs" />
     <Compile Include="Assets\Scripts\Constraints.cs" />
+    <Compile Include="Assets\Scripts\constraintsV2.cs" />
     <Compile Include="Assets\Scripts\ControllerGrabObject.cs" />
     <Compile Include="Assets\Scripts\InteractionCategory.cs" />
+    <Compile Include="Assets\Scripts\objectProp.cs" />
     <Compile Include="Assets\Scripts\Parent.cs" />
     <Compile Include="Assets\Scripts\ParentTwo.cs" />
   </ItemGroup>
